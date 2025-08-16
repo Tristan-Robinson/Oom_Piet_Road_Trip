@@ -149,7 +149,7 @@ RectTransform:
   m_GameObject: {fileID: 232506714}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1524109674}
@@ -294,8 +294,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 454, y: 162}
-  m_SizeDelta: {x: 200, y: 300}
+  m_AnchoredPosition: {x: 209, y: 99}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &268761479
 MonoBehaviour:
@@ -340,19 +340,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 268761480}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 639471860}
-        m_TargetAssemblyTypeName: CarMovement, Assembly-CSharp
-        m_MethodName: MoveLeft
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &268761480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,7 +391,6 @@ GameObject:
   - component: {fileID: 639471858}
   - component: {fileID: 639471857}
   - component: {fileID: 639471856}
-  - component: {fileID: 639471860}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -492,33 +479,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 639471855}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -0.5, y: 1.47, z: -21.3}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 21.62, y: 1.47, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 963194228}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &639471860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 639471855}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d02f629b5635c34ea35f2d80cd8e01b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  horizontalSpeed: 5
-  xBound: 5
-  acceleration: 0.5
-  maxSpeed: 50
-  leftButton: {fileID: 268761477}
-  rightButton: {fileID: 1524109673}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,13 +666,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.99802446, z: 0.06282691, w: 0}
-  m_LocalPosition: {x: -0.099999994, y: 3.2299998, z: 7.5}
+  m_LocalRotation: {x: 0.058828533, y: -0.7046554, z: 0.058828548, w: 0.7046554}
+  m_LocalPosition: {x: 6.63, y: 3.42, z: 0.08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 639471859}
-  m_LocalEulerAnglesHint: {x: 7.204, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 9.545, y: -90, z: 0}
 --- !u!1 &1165316358
 GameObject:
   m_ObjectHideFlags: 0
@@ -803,13 +771,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1165316358}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 50, y: 1, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1455837490
 GameObject:
   m_ObjectHideFlags: 0
@@ -861,7 +829,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -949,8 +917,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -382, y: 170}
-  m_SizeDelta: {x: 200, y: 300}
+  m_AnchoredPosition: {x: -191, y: 97}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1524109675
 MonoBehaviour:
@@ -995,19 +963,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1524109676}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 639471860}
-        m_TargetAssemblyTypeName: CarMovement, Assembly-CSharp
-        m_MethodName: MoveRight
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1524109676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1141,7 +1097,7 @@ RectTransform:
   m_GameObject: {fileID: 1949264371}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 268761478}

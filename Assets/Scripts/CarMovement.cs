@@ -1,51 +1,72 @@
 using UnityEngine;
-using UnityEngine.UI; // For UI Button functionality
+using UnityEngine.EventSystems; // Needed for button hold events
 
 public class CarMovement : MonoBehaviour
 {
-    public float speed = 10f; // Speed at which the car moves forward
-    public float horizontalSpeed = 5f; // Speed at which the car moves left/right
-    public float xBound = 5f; // Boundary for how far left/right the car can move
-    private float movementX; // Horizontal movement input
+    [Header("Movement Settings")]
+    public float speed = 10f;             // Forward speed
+    public float horizontalSpeed = 5f;    // Side movement speed
+    public float xBound = 5f;             // Left/right limits
+    public float acceleration = 0.5f;     // Speed increase per second
+    public float maxSpeed = 50f;          // Maximum forward speed
 
-    public Button leftButton;  // Reference to the Left Button
-    public Button rightButton; // Reference to the Right Button
+    [Header("UI Buttons")]
+    public GameObject leftButton;         // Left button UI
+    public GameObject rightButton;        // Right button UI
+
+    private int buttonDirection = 0;      // -1 = left, 1 = right, 0 = none
 
     private void Start()
     {
-        // Assign Button listeners for mobile controls
-        if (leftButton != null)
-            leftButton.onClick.AddListener(MoveLeft);
-        if (rightButton != null)
-            rightButton.onClick.AddListener(MoveRight);
+        // Setup hold-to-steer events for mobile buttons
+        if (leftButton != null) AddHoldListener(leftButton, -1);
+        if (rightButton != null) AddHoldListener(rightButton, 1);
     }
 
-    void Update()
+    private void Update()
     {
-        // Move the car forward
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        // Gradually increase forward speed
+        speed = Mathf.Min(speed + acceleration * Time.deltaTime, maxSpeed);
 
-        // Get player input for left/right movement (A/D keys or buttons)
-        movementX = Input.GetAxis("Horizontal"); // A/D or Left/Right arrow keys
+        // Keyboard input (A/D or arrow keys)
+        float keyboardInput = Input.GetAxis("Horizontal");
 
-        // Move the car left and right, constrained by xBound
-        float newXPosition = Mathf.Clamp(transform.position.x + movementX * horizontalSpeed * Time.deltaTime, -xBound, xBound);
-        transform.position = new Vector3(newXPosition, transform.position.y, transform.position.z);
+        // Dead zone fix (ignore tiny unwanted drift)
+        if (Mathf.Abs(keyboardInput) < 0.1f)
+            keyboardInput = 0f;
+
+        // Combine keyboard + button input
+        float movementX = keyboardInput + buttonDirection;
+
+        // --- Forward movement ---
+        transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.World);
+
+        // --- Side movement ---
+        float newX = transform.position.x + movementX * horizontalSpeed * Time.deltaTime;
+
+        // Clamp X position so car stays on the road
+        newX = Mathf.Clamp(newX, -xBound, xBound);
+
+        // Apply new position (keep Y and Z unchanged)
+        transform.position = new Vector3(newX, transform.position.y, transform.position.z);
     }
 
-    // Function to move the car left using button press
-    public void MoveLeft()
+    private void AddHoldListener(GameObject buttonObj, int dir)
     {
-        // Only allow movement within bounds
-        float newXPosition = Mathf.Clamp(transform.position.x - horizontalSpeed * Time.deltaTime, -xBound, xBound);
-        transform.position = new Vector3(newXPosition, transform.position.y, transform.position.z);
-    }
+        EventTrigger trigger = buttonObj.GetComponent<EventTrigger>();
+        if (trigger == null)
+            trigger = buttonObj.AddComponent<EventTrigger>();
 
-    // Function to move the car right using button press
-    public void MoveRight()
-    {
-        // Only allow movement within bounds
-        float newXPosition = Mathf.Clamp(transform.position.x + horizontalSpeed * Time.deltaTime, -xBound, xBound);
-        transform.position = new Vector3(newXPosition, transform.position.y, transform.position.z);
+        trigger.triggers.Clear(); // prevent duplicate entries
+
+        // PointerDown = start steering
+        EventTrigger.Entry downEntry = new EventTrigger.Entry { eventID = EventTriggerType.PointerDown };
+        downEntry.callback.AddListener((data) => { buttonDirection = dir; });
+        trigger.triggers.Add(downEntry);
+
+        // PointerUp = stop steering
+        EventTrigger.Entry upEntry = new EventTrigger.Entry { eventID = EventTriggerType.PointerUp };
+        upEntry.callback.AddListener((data) => { buttonDirection = 0; });
+        trigger.triggers.Add(upEntry);
     }
 }

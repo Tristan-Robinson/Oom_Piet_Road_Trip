@@ -492,14 +492,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 639471855}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 21.62, y: 1.47, z: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -0.5, y: 1.47, z: -21.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 963194228}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &639471860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,8 +515,10 @@ MonoBehaviour:
   speed: 10
   horizontalSpeed: 5
   xBound: 5
-  leftButton: {fileID: 268761479}
-  rightButton: {fileID: 1524109675}
+  acceleration: 0.5
+  maxSpeed: 50
+  leftButton: {fileID: 268761477}
+  rightButton: {fileID: 1524109673}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,13 +698,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.08319611, y: -0, z: 0.00000001117587, w: 0.99653316}
-  m_LocalPosition: {x: 0.07999905, y: 3.4200003, z: -6.63}
+  m_LocalRotation: {x: -0, y: -0.99802446, z: 0.06282691, w: 0}
+  m_LocalPosition: {x: -0.099999994, y: 3.2299998, z: 7.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 639471859}
-  m_LocalEulerAnglesHint: {x: 9.545, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 7.204, y: 0, z: 0}
 --- !u!1 &1165316358
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,13 +803,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1165316358}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 50, y: 1, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1455837490
 GameObject:
   m_ObjectHideFlags: 0
